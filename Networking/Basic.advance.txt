@@ -1,1 +1,137 @@
 Basic Netwworking:
+Complete Networking Summary for Pentesting (As Learned by Manoj)
+
+
+---
+
+1. Introduction to Networking:
+
+Definition of Networking
+
+Importance of Networking in Cybersecurity and Pentesting
+
+
+2. Fundamental Concepts:
+
+What is an IP Address?
+
+Static vs Dynamic IP
+
+Public vs Private IP
+
+
+MAC Address
+
+DNS (Domain Name System)
+
+Ports and Protocols
+
+Common Ports: 80, 443, 21, 22, 25, 53, etc.
+
+
+TCP/IP Model vs OSI Model
+
+Layers and Responsibilities
+
+
+
+3. IP Addressing & Subnetting:
+
+IPv4 and IPv6
+
+Classes of IP Addresses (A, B, C)
+
+Subnet Mask
+
+CIDR Notation
+
+Default Gateway Concept
+
+How routing decisions are made
+
+
+4. Core Networking Devices:
+
+Hub (Broadcasts to all ports)
+
+Switch (Multicast, Intelligent forwarding)
+
+Router (Chooses best path, encrypts, forwards packet)
+
+Bridge (Connects two networks)
+
+Repeater (Amplifies signal)
+
+Modem (Modulates/Demodulates signals)
+
+Gateway (Protocol Translator)
+
+Access Point
+
+Firewall (Monitors incoming/outgoing traffic, enforces rules)
+
+Proxy Server (Acts on behalf of client, hides identity)
+
+
+5. Address Allocation & Management:
+
+DHCP (Dynamic Host Configuration Protocol)
+
+Works in Routers, ISP Towers, assigns IP automatically
+
+
+NAT (Network Address Translation)
+
+
+6. Packet Journey Explanation:
+
+Packet as a "traveller"
+
+Router as a "bus" and "path decision maker"
+
+Path optimization and traffic load awareness
+
+What happens if packet is dropped?
+
+TCP handles retransmission
+
+ICMP for diagnostics (ping, traceroute)
+
+
+
+7. Special Protocols & Concepts:
+
+ICMP (for network diagnostics)
+
+VPN (Virtual Private Network)
+
+Encrypts traffic, hides identity
+
+Tunnel between client and destination
+
+
+ARP (Address Resolution Protocol)
+
+DNS Resolution Process
+
+Proxy Server working with cache, anonymity
+
+
+8. Security & Real-Life Mapping:
+
+How all these devices/protocols are relevant in Pentesting
+
+Real life examples (Phone connecting to IP via DHCP, Router forwarding, Firewall blocking unauthorized requests, etc.)
+
+
+9. Revisions and Mastery:
+
+3x Revisions completed
+
+Learned all networking concepts without a laptop
+
+Priority given to practical understanding
+
+Understood implementation importance, will apply later
+
+

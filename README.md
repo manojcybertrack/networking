@@ -1,4 +1,4 @@
-# my-pentesting-journey
+# from-zero-to-root
 Personal notes and resources from my journey into penetration testing and ethical hacking.
 Complete Networking Summary for Pentesting (As Learned by Manoj)
 

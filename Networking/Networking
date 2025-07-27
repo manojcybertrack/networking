@@ -1,1 +1,70 @@
 
+
+# 🧠💥 NETWORKING BLACK VAULT – PERSONAL WAR LOG 📡💀
+
+> ❝ यह कोई ट्यूटोरियल नहीं है,  
+> यह मेरा खुद का वॉरजोन है — जहां मैं नेटवर्किंग सीखते वक़्त हर टूल, हर अटैक और हर सिमुलेशन को जोड़ता हूँ, जैसे-जैसे मैं आगे बढ़ता हूँ। ❞
+
+---
+
+## 🧷 WHAT IS THIS FOLDER?
+
+📁 यह फोल्डर मेरी Personal Research Lab की तरह है।  
+इसमें:
+
+- ✍️ मैंने अब तक जो भी Networking में सीखा है — चाहे Packet-level Protocols हों या Live Attacks
+- 🧪 जिन Tools से टेस्टिंग की है — चाहे वो BlackHat use हों या Defensive mimicry
+- 🎯 जितने Simulation मैंने बनाए — चाहे गलत हुए हों या सही
+- 🤖 और हर वह Concept जो मुझे Offensive Networking में उलझा और फिर मैं उसे धीरे-धीरे समझ पाया
+
+सब कुछ यहाँ **Raw, Unfiltered, Real** स्टाइल में मौजूद रहेगा।
+
+---
+
+## 🔥 CONTENT INCLUDED
+
+- 🧱 OSI + TCP/IP Layers की Core Breakdown (मेरे अपने words में)
+- 💣 Live Layer Attacks (ARP Spoofing, ICMP Tunnels, DNS Attacks, etc.)
+- 🧰 Tool Usages: Scapy, Bettercap, Nmap, Netcat, Hping3, Ettercap, etc.
+- 🧪 Simulation Ideas और Result Screenshots
+- 💭 Notes, Reflections, Mistakes, और Hackers का माइंडसेट
+- 🧨 Experimental Payloads – Testing only in lab setups
+
+---
+
+## ⚠️ LEGAL + ETHICAL WARNING
+
+🚫 **WARNING: DO NOT USE THIS FOLDER TO LAUNCH REAL ATTACKS.**  
+🧠 This repository is a **personal learning vault** — not a training guide, not a public toolkit.
+
+🧷 The tools, techniques, and methods shown here are for **private study and simulation purposes** only.  
+⚖️ Any misuse of this knowledge is **entirely at your own risk**. I will not be responsible for any unethical use, system compromise, or legal action taken.
+
+> **⚠️ You're inside a personal log of BlackHat Learning.  
+Treat it as a digital landmine field. Enter at your own risk.** 💀💻
+
+---
+
+## 👤 OWNER & AUTHOR:  
+**🕶️ Manoj** – A curious student exploring the silent layers of Networking with a BlackHat Mindset.  
+📍Learning everything hands-on — not to show off, but to build mastery from scratch.
+
+> 🔐 *"I'm not teaching here. I'm just recording what I learn while digging into the underground side of networks."*
+
+---
+
+## 🧨 NOTE TO VIEWERS:
+
+📢 **This folder will be updated irregularly.**  
+New learnings will be dumped as-is. Formatting may be broken. English + Hindi mix will be present.  
+Raw thoughts, broken experiments, unknown outcomes — सबकुछ डालूंगा।
+
+Because **this is not a showpiece... this is a battlefield journal.**
+
+---
+
+
+
+ >>>>>>>>>>
+
+

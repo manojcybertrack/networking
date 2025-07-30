@@ -68,3 +68,131 @@ Because **this is not a showpiece... this is a battlefield journal.**
  >>>>>>>>>> इसको अगर आप पढ़ रहे हैं और आपको कहीं पर भी कुछ गलतलगे तुम मेरे को बताने की कृपा करें और अगर आपको कुछ गलत लगता है इसके अंदर कुछ ऐसीचीज जो गलत लगतीहै तो मेरे को माफ करें 🥰🥰
 
 
+🟪 7. Application Layer (Layer 7)
+
+📍 User से सबसे नज़दीक – यहीं से Data Travel शुरू होता है
+🧠 Black Hat Angle: ये Layer कमजोर हो गई तो पूरा सिस्टम पे कब्ज़ा हो सकता है!
+
+Feature	Detail
+
+🎯 Attack Surface	Web Apps, DNS, Email, API, FTP, OAuth, JWT
+🧨 Attacks	XSS, SQLi, RCE, IDOR, SSRF, OAuth Misconfig, JWT Forging
+🧰 Tools	Burp Suite Pro 🔥, OWASP ZAP, Postman, JWT.io, Subfinder, Amass
+💻 OS	Kali Linux, Parrot OS
+🛠️ Commands	curl, httpie, sqlmap, ffuf, nuclei
+📌 Pentester Mindset	“Headers और Params में ही पूरा गड़बड़ है”
+⚔️ Deep Skill	Web Protocol Exploitation, Token Replay, Auth Bypass, Logic Flaws
+
+
+
+---
+
+🟦 6. Presentation Layer (Layer 6)
+
+📍 Data Encoding & Encryption का Layer
+🧠 Black Hat Angle: SSL/TLS Misuse = MiTM Possible 🤯
+
+Feature	Detail
+
+🎯 Attack Surface	SSL/TLS, HTTPS, Certificate Validation
+🧨 Attacks	SSL Strip, Weak Cipher Suite, TLS Downgrade
+🧰 Tools	Bettercap, mitmproxy, sslyze, testssl.sh
+💻 OS	Kali Linux, BlackArch
+🛠️ Commands	openssl s_client, testssl.sh, mitmproxy
+📌 Pentester Mindset	“अगर Encrypt गलत हुआ, तो Data मेरा हुआ!”
+⚔️ Deep Skill	Cert Pinning Bypass, TLS Fingerprint Manipulation
+
+
+
+---
+
+🟩 5. Session Layer (Layer 5)
+
+📍 Session Management – यहीं Login टोकन, Cookies चलते हैं
+🧠 Black Hat Angle: अगर Session Hijack कर लिया, तो Victim बन गया Puppet
+
+Feature	Detail
+
+🎯 Attack Surface	Cookies, Session ID, JWT, API Keys
+🧨 Attacks	Session Hijacking, Session Fixation, Reuse, SideJacking
+🧰 Tools	Wireshark, Burp Suite, Session Cookie Editor
+💻 OS	Kali, Windows (Chrome DevTools)
+🛠️ Commands	tshark, cookie-tool.py
+📌 Pentester Mindset	“एक सही Cookie = पूरा Account Control”
+⚔️ Deep Skill	Sniffing Tokens on HTTP, Local Storage Tampering
+
+
+
+---
+
+🟨 4. Transport Layer (Layer 4)
+
+📍 TCP/UDP = Data Delivery का Backbone
+🧠 Black Hat Angle: Port ही खोल दिया तो घर के दरवाज़े खुले! 🏚️
+
+Feature	Detail
+
+🎯 Attack Surface	TCP/UDP Ports, Services (SSH, RDP, etc)
+🧨 Attacks	Port Scanning, Banner Grabbing, DoS/Flooding
+🧰 Tools	Nmap, Masscan, Netcat, Hping3, Scapy
+💻 OS	Linux, Windows (PowerShell), BSD
+🛠️ Commands	nmap -sS -Pn, nc -vz, hping3 -S
+📌 Pentester Mindset	“जो Port खुला मिला, वही Exploit का Entry Point है”
+⚔️ Deep Skill	SYN Stealth Scans, SlowLoris, TCP Reset Attacks
+
+
+
+---
+
+🟧 3. Network Layer (Layer 3)
+
+📍 Routing, IP Addressing, Packet Flow
+🧠 Black Hat Angle: IP Spoof किया = Mask पहन लिया 😈
+
+Feature	Detail
+
+🎯 Attack Surface	IP, ICMP, Routing Table, Firewalls
+🧨 Attacks	IP Spoofing, ICMP Tunneling, VPN Bypass
+🧰 Tools	Scapy, Traceroute, ICMPExfil, VPNPivot
+💻 OS	Linux, Tails OS
+🛠️ Commands	scapy, ping -l, traceroute
+📌 Pentester Mindset	“Packets को Manipulate करना ही असली मस्ती है”
+⚔️ Deep Skill	Packet Crafting, ICMP Covert Channels, VPN Escape
+
+
+
+---
+
+🟫 2. Data Link Layer (Layer 2)
+
+📍 MAC Addressing, Switching, Frames
+🧠 Black Hat Angle: यहाँ से अंदर घुसते हैं जब VLAN या Switch को बेवकूफ बनाना हो 😈
+
+Feature	Detail
+
+🎯 Attack Surface	Switches, MAC Tables, VLAN Tags
+🧨 Attacks	ARP Spoofing, MAC Flooding, VLAN Hopping
+🧰 Tools	Ettercap, Responder, Yersinia
+💻 OS	Kali Linux, PwnPi
+🛠️ Commands	arpspoof, ettercap -G, responder -I eth0
+📌 Pentester Mindset	“Switch को फालतू Packet भेजो, वो बेवकूफ बन जाएगा”
+⚔️ Deep Skill	Layer 2 Pivoting, Fake Gateway Attacks
+
+
+
+---
+
+⬛ 1. Physical Layer (Layer 1)
+
+📍 Wires, RF, Signals – Hardware Level
+🧠 Black Hat Angle: “Wire तक पहुंचा तो पूरा Data मेरा है”
+
+Feature	Detail
+
+🎯 Attack Surface	Ethernet Cables, Wi-Fi, USB Ports
+🧨 Attacks	Wiretap, RF Jamming, USB HID Attacks
+🧰 Tools	HackRF, Wireshark, USB Rubber Ducky, Flipper Zero
+💻 OS	Kali, USB Live OS
+🛠️ Commands	No standard CLI – Mostly Hardware Based
+📌 Pentester Mindset	“Hardware Hack = Ultimate Stealth Access”
+⚔️ Deep Skill	Tempest Attacks, Signal Injection, Power Line Exploits

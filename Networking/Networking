@@ -67,6 +67,10 @@ Because **this is not a showpiece... this is a battlefield journal.**
 
  >>>>>>>>>> इसको अगर आप पढ़ रहे हैं और आपको कहीं पर भी कुछ गलतलगे तुम मेरे को बताने की कृपा करें और अगर आपको कुछ गलत लगता है इसके अंदर कुछ ऐसीचीज जो गलत लगतीहै तो मेरे को माफ करें 🥰🥰
 
+  start osi   ********
+
+
+
 
 🟪 7. Application Layer (Layer 7)
 
@@ -196,3 +200,165 @@ Feature	Detail
 🛠️ Commands	No standard CLI – Mostly Hardware Based
 📌 Pentester Mindset	“Hardware Hack = Ultimate Stealth Access”
 ⚔️ Deep Skill	Tempest Attacks, Signal Injection, Power Line Exploits
+
+
+
+
+
+
+
+
+>>>>>>TCP/IP।   ____________________&________________________________
+
+
+   🚦 TCP/IP Model – The Cyber Railway 🚉
+
+> ये मॉडल सिर्फ Communication का नहीं, Pentester का वार जोन है!
+हर Layer = एक Track
+हर Protocol = एक Engine
+हर Packet = एक Passenger
+हर Hacker = एक घात लगाकर बैठा Villain 🎭
+
+
+
+
+---
+
+🧱 Layer 1: Network Access / Link Layer
+
+📍 Handles Physical Media + MAC level Communication
+
+🔧 Protocols:
+
+Ethernet
+
+ARP (Address Resolution Protocol)
+
+Wi-Fi (IEEE 802.11)
+
+
+⚠️ Common Attacks:
+
+ARP Spoofing / Poisoning:
+👉 Tool: arpspoof, ettercap, Bettercap
+👉 OS: Kali Linux, Parrot
+👉 Usage: LAN sniffing, MITM
+
+MAC Flooding:
+👉 Tool: macof
+👉 काम: Switch को Hub की तरह बना देना
+
+Rogue AP (Evil Twin):
+👉 Tool: airbase-ng, wifiphisher
+👉 Real-world use: Public Wi-Fi trap
+
+
+🧠 Black Hat Thought:
+
+> "अगर कोई company बिना NAC के WiFi Access दे रही है — तो समझ, पहला दरवाज़ा खुला मिल गया तुझे!" 🔓
+
+
+
+
+---
+
+🚇 Layer 2: Internet Layer (IP Layer)
+
+📍 Handles Routing, IP Addressing, Fragmentation
+
+🔧 Protocols:
+
+IPv4 / IPv6
+
+ICMP
+
+IPSec
+
+
+⚠️ Common Attacks:
+
+IP Spoofing
+
+ICMP Tunneling
+
+Fragmentation Attacks
+👉 Tools: hping3, nmap -f, Scapy
+
+
+🧠 Black Hat Thought:
+
+> "ICMP बंद करवा दो Production Server में — Ping एक Legitimate tool है लेकिन Tunneling भी उसी से होती है!" 🛤️👀
+
+
+
+
+---
+
+🚄 Layer 3: Transport Layer
+
+📍 Handles End-to-End Communication – Ports, Segments, Reliability
+
+🔧 Protocols:
+
+TCP
+
+UDP
+
+
+⚠️ Common Attacks:
+
+Port Scanning
+👉 Tool: nmap, masscan
+👉 TCP: Reliable, 3-way handshake
+👉 UDP: No ACKs = फुल साइलेंट अटैक
+
+TCP Session Hijacking
+👉 Tool: Ettercap, dsniff
+👉 Pre-condition: Sequence number prediction
+
+UDP Flood (DDoS)
+👉 Tool: hping3 --flood, LOIC, HOIC
+
+
+🧠 Black Hat Thought:
+
+> "Transport Layer का मतलब: Port = Entry gate. तू pentester है = Gate की चाबी लेकर घूमता है!" 🗝️🎯
+
+
+
+
+---
+
+🛰️ Layer 4: Application Layer
+
+📍 User Interaction, Data Formatting, Services
+
+🔧 Protocols:
+
+HTTP, HTTPS
+
+DNS
+
+FTP
+
+SMTP
+
+SSH, Telnet
+
+
+⚠️ Common Attacks:
+
+HTTP Parameter Pollution, XSS, SQLi, SSRF
+👉 Tool: Burp Suite, sqlmap, ffuf, nuclei
+
+DNS Spoofing / Cache Poisoning
+👉 Tool: dnsspoof, Responder
+
+FTP Anonymous Login
+👉 OS: Kali/Parrot
+👉 Command: ftp target.com → try anonymous login
+
+
+🧠 Black Hat Thought:
+
+> "Application Layer का मतलब सिर्फ Browser नहीं है — ये Layer सबसे Juice देती है! यहीं से Data Exfiltration शुरू होती है!" 🧃📤। 

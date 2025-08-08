@@ -594,3 +594,145 @@ Metasploit	बहुत सारे UPnP/NAT modules
 
 
 
+🔎 राउटर के अंदर के Components & Protocols (Pentester's List):
+
+1. ⚡ NAT (Network Address Translation)
+
+➡️ Local → Public IP translation (जो पहले समझ लिया)
+
+
+---
+
+2. 🌐 UPnP (Universal Plug and Play)
+
+➡️ Auto port forwarding, जो स्क्रिप्ट से मोड़ा जा सकता है (ये भी देख लिया)
+
+
+---
+
+3. 🔥 DHCP (Dynamic Host Configuration Protocol)
+
+➡️ IP देने का काम करता है:
+
+अटैक: Rogue DHCP server बनाकर poisoning
+
+टूल्स: dhcpstarv, Yersinia
+
+
+
+---
+
+4. 📡 DNS Relay / DNS Proxy
+
+➡️ DNS क्वेरी राउटर के ज़रिए जाती है
+
+अटैक: DNS Hijacking या Spoofing
+
+टूल्स: dnsspoof, ettercap, Bettercap
+
+
+
+---
+
+5. 🔐 Admin Interface (Web UI / Telnet / SSH)
+
+➡️ राउटर को कंट्रोल करने वाला Admin Panel
+
+Default creds → Bruteforce
+
+Vulns → Command Injection, CSRF, XSS
+
+टूल्स: hydra, nmap --script http-admin, routersploit
+
+
+
+---
+
+6. 🎯 Port Forwarding Rules
+
+➡️ राउटर में कौन से लोकल सर्वर पब्लिक से एक्सेस हो सकते हैं
+
+अटैक: Misconfigured या UPnP से Port Open करा लेना
+
+
+
+---
+
+7. 🧰 Remote Management / TR-069 / CWMP
+
+➡️ ISP राउटर को रिमोट से कंट्रोल कर सकते हैं
+
+अटैक: CVE बहुत सारे हैं इसमें
+
+Exploits: जैसे Netgear/TR-069 RCE
+
+
+
+---
+
+8. 📻 SNMP (Simple Network Management Protocol)
+
+➡️ राउटर के स्टेटस की मॉनिटरिंग
+
+अटैक: SNMPv1 में No Auth होता है → डेटा लीक
+
+टूल्स: snmpwalk, snmpenum
+
+
+
+---
+
+9. 🔐 WPS (Wi-Fi Protected Setup)
+
+➡️ वो “Push button to connect” वाला फीचर
+
+अटैक: Bruteforce → WPS PIN से Wi-Fi पासवर्ड
+
+टूल्स: reaver, bully
+
+
+
+---
+
+10. 🔧 Firewall & ACLs (Access Control Lists)
+
+➡️ कौन-कौन सी IP या Port Block हो
+
+अटैक: ACL misconfig से अंदर घुस जाना
+
+टूल्स: nmap -Pn, hping3 (फायरवॉल बायपास)
+
+
+
+---
+
+11. 🧠 Routing Table / Static Routes
+
+➡️ राउटर किस IP को कहां फॉरवर्ड करे
+
+अटैक: Route poisoning या static route hijack
+
+टूल्स: quagga, frrouting, yersinia
+
+
+
+---
+
+12. 🔥 Embedded OS Vulnerabilities
+
+➡️ राउटर के अंदर BusyBox, Dropbear, OpenWRT आदि होते हैं
+
+अटैक: पुराने वर्ज़न में RCE
+
+टूल्स: exploit-db, metasploit, binwalk, firmadyne
+
+
+
+---
+
+13. 🎥 IoT Connected Devices
+
+➡️ बहुत से IoT राउटर से जुड़े होते हैं — उनके वेबपैनल/FTP भी खुल सकते हैं
+
+अटैक: Default creds, DoS, Shodan से खोज
+

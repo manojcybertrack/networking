@@ -1609,3 +1609,368 @@ For each protocol finding include:
 
 
 6. Owner & Timeline
+
+
+
+
+
+
+
+
+
+
+
+
+1. Routing (Static, Dynamic — OSPF, BGP fundamentals)
+
+
+2. NAT, PAT और IP Addressing Design, Subnetting Deep-Dive
+
+
+3. Firewalls (stateful vs stateless), ACLs, Zone-Based Design
+
+
+4. VPNs & Tunnels (IPsec, TLS VPNs, SSL/TLS tunnels, GRE, WireGuard)
+
+
+5. Wireless (802.11 a/b/g/n/ac/ax), Enterprise WPA2/WPA3, EAP methods, rogue APs
+
+
+6. IPv6 differences & pitfalls
+
+
+7. BGP threats (prefix hijack, route leaks) — high impact, low visibility
+
+
+8. Cloud networking (VPCs, IGW, Security Groups, NACLs, peering, transit)
+
+
+9. OT/ICS networking basics & special risks (modbus, DNP3, air-gapped myths)
+
+
+10. Application-layer gateways, proxies, API security (rate limits, auth tokens)
+
+
+11. Logging, telemetry, SIEM best practices, retention & chain of custody
+
+
+12. Blue/Red team orchestration: purple teaming, detection engineering
+
+
+13. Supply-chain & hardware implant risks (pre-installed firmware, evil cables)
+
+
+
+
+---
+
+2) हर टॉपिक — पेन-टेस्टिंग POV (क्या होता है, क्यों खतरनाक, indicators, defence)
+
+> हर सेक्शन कॉन्सेप्चुअल है — आपको हमलावर की सोच देता है पर कोई ऑपरेशनल हमला नहीं।
+
+
+
+Routing (OSPF / BGP)
+
+क्या ख़तरा: Misconfigured routing or BGP hijacks can redirect traffic globally or locally.
+
+Indicators: Unexpected path changes, AS path anomalies, new next-hops, traceroute discrepancies.
+
+Defence: BGP prefix filtering, RPKI route origin validation, routing change alerts, backup path validation.
+
+
+NAT / Subnetting
+
+क्या ख़तरा: Poor IP design → broadcast domains too big, overlap, accidental exposure; NAT leakage reveals internal addresses.
+
+Indicators: Unexpected NAT translations, address collisions, private IPs seen externally.
+
+Defence: Clean IP plan, small subnets for security zones, NAT auditing.
+
+
+Firewalls & ACLs
+
+क्या ख़तरा: Overly-allowing rules, admin mistakes, shadow rules → lateral movement & service exposure.
+
+Indicators: Rare flows through seldom-used rules, last-modified timestamps, rules with 0.0.0.0/0.
+
+Defence: Rule review cadence, least privilege ACLs, policy-as-code and rule test harness.
+
+
+VPNs & Tunnels
+
+क्या ख़तरा: Misconfigured split-tunnel, weak encryption, weak auth → exfil or backdoor into corp.
+
+Indicators: Persistent long-lived tunnels, unusual remote IPs in tunnel endpoints, tunnel traffic on odd ports.
+
+Defence: Enforce full-tunnel for critical assets, strong algorithms, MFA & cert pinning, monitor tunnel endpoints.
+
+
+Wireless (WPA2/WPA3, EAP)
+
+क्या ख़तरा: Rogue APs, weak EAP config, enterprise misconfig → client creds capture, mitm.
+
+Indicators: Duplicate SSIDs, AP with same SSID but different BSSID, EAP failures, WPA handshake anomalies.
+
+Defence: 802.1X + EAP-TLS preferred, PMF, management frame protection, enterprise RF surveys, rogue AP detection.
+
+
+IPv6
+
+क्या ख़तरा: Admins ignore IPv6 → default-enabled, weak firewall rules, SLAAC pitfalls.
+
+Indicators: Unexpected IPv6 traffic, ICMPv6 neighbor anomalies.
+
+Defence: Explicit IPv6 policy, RA guard, firewall rules for v6, log IPv6 flows.
+
+
+BGP threats
+
+क्या ख़तरा: Prefix hijack leads to massive eavesdrop/DoS; especially dangerous for cloud/peering.
+
+Indicators: Sudden routing shifts, BGP origin change, traffic blackholing.
+
+Defence: Filtering, RPKI, monitoring services, AS path sanity checks.
+
+
+Cloud Networking (VPCs)
+
+क्या ख़तरा: Misconfigured SGs/NACLs, open metadata endpoints, public S3, cross-account roles.
+
+Indicators: New public endpoints, unusual IAM role usage, long-lived public ports.
+
+Defence: least privilege IAM, VPC flow logs, cloud-native IDS, block metadata where not needed.
+
+
+OT/ICS Networking
+
+क्या ख़तरा: Legacy protocols with no auth (Modbus, DNP3). Air-gap myths.
+
+Indicators: Unexpected traffic on ICS ports, engineering workstations bridging IT/OT.
+
+Defence: Strong segmentation (physically), protocol gateways, asset inventory, vendor patch policy.
+
+
+Application Proxies & APIs
+
+क्या ख़तरा: Auth bypass via misconfigured proxy, token leakage, weak rate limits → API abuse.
+
+Indicators: Bursts of API requests, expired tokens used, unusual endpoints.
+
+Defence: API gateways, auth scopes, WAF, proper logging.
+
+
+
+---
+
+3) Advanced / Rare लेकिन जानना ज़रूरी (Industry surprises) ⚠️
+
+Layer-2 forwarding plane exploits: CAM overflow (flooding) to force switch into “hub” mode.
+
+Split-brain routing via BGP misconfig + cloud peering — attacker triggers route blackhole by manipulating transit.
+
+Metadata exfil via cloud instance (IMDS v1 vs v2 issues) — cloud-specific high-impact leak.
+
+Side-channel EM/TEMPEST on copper runs — rare, but targeted attackers use it for high-value targets.
+
+Firmware supply-chain compromise — baseline firmware hashes and code signing checks are critical.
+
+
+
+---
+
+4) Detection & Telemetry — क्या लॉग/मैट्रिक्स रखना चाहिए (SIEM/NSM playbook) 🧾
+
+Network: NetFlow/IPFIX, sFlow, Zeek logs (conn, dns, http, ssl), switch logs (MAC table, errdisable), DHCP server logs.
+
+Endpoints: EDR alerts, ARP table snapshots, route table changes.
+
+Cloud: VPC flow logs, CloudTrail/CloudWatch, IAM usage logs, metadata access logs.
+
+Retention & Forensics: PCAP retention for critical segments (30–90d), hashed artifact storage, time sync (NTP), chain-of-custody.
+
+Correlation rules to prioritize: MAC churn + new switch port active → alert; BGP origin change + traffic shift → escalate; Egress DNS tunnelling patterns → hunt.
+
+
+
+---
+
+5) Penetration-Test Track — पूरा सीखने/प्रैक्टिस ट्रैक (0 → Pro) 🎓🛠️
+
+Stage 0 — Foundations (0–4 weeks)
+
+Networking basics: OSI, TCP/IP, ARP, switching, routing, subnetting.
+
+Practical: build mini lab, basic packet captures (Wireshark) — analysis only.
+
+
+Stage 1 — Visibility & Detection (4–12 weeks)
+
+Zeek logs parsing, NetFlow analysis, SIEM basics, writing simple detection rules.
+
+Practice: baseline traffic, create anomalies in lab, detect them.
+
+
+Stage 2 — Defensive Hardening & Purple Teaming (3–6 months)
+
+Configure port-security, DHCP snooping, BGP filtering, firewall policies.
+
+Build detection playbooks and test with red-team in isolated lab.
+
+
+Stage 3 — Offensive Theory & Labs (6–12 months)
+
+Deep dive into protocol weaknesses conceptually (ARP/DHCP/DNS/SMB).
+
+Hands-on in authorized CTFs / labs (TryHackMe, HTB, OffSec). Focus on detection evasion theory and defenses.
+
+
+Stage 4 — Specialist Paths (ongoing)
+
+Network attack surface specialist: BGP, MPLS, carrier-grade.
+
+Cloud network specialist: VPCs, cloud-native IDS, IAM networking.
+
+OT/ICS specialist: industrial protocols, safety-first testing.
+
+
+Certifications to target (suggested)
+
+Network+/Security+ → foundation
+
+OSCP / eJPT / PEN-200 (OffSec) → practical offensive skills (lab only)
+
+GCIA/GCIH/GRE (SANS) → detection/incident response mastery
+
+CCNA/CCNP (networking depth) and cloud certs (AWS/GCP Cloud Security) for cloud networking.
+
+
+
+---
+
+6) Lab Blueprint — अपना पैक (isolated, safe) 🧪
+
+Hardware/VMs: managed switch (virtual or physical), router (virtual), DHCP/DNS servers, Windows/Linux hosts, IDS host (Suricata/Zeek), SIEM (ELK/Splunk), cloud sandbox account.
+Scenarios to practice (lab only): subnet misconfig, trunk misconfig, VPN split vs full tunnel, rogue DHCP (lab), IPv6 unwanted traffic, BGP toy lab using FRRouting/quagga.
+Tools (learn-only list): Zeek, Suricata, Wireshark, tcpdump, NetFlow collectors, testssl.sh, test labs: TryHackMe/HTB/OffSec.
+Note: किसी भी attack simulation को केवल अपने लैब में और लिखित RoE के साथ ही करें।
+
+
+---
+
+7) Pentester Evidence Kit — क्या-क्या capture करें (industry-ready) 📁
+
+PCAPs (hash + timestamp) for relevant windows.
+
+NetFlow/Zeek logs, switch MAC dumps, router BGP/OSPF state, firewall ACL snapshots.
+
+Cloud logs: VPC flow, CloudTrail; IAM logs.
+
+Photographs of physical access points, patch panels, tamper evidence.
+
+Chain-of-custody document, artifact hashes (SHA256), witness & signatures.
+
+
+
+---
+
+8) Report Structure — एक परफेक्ट Pentest Finding (copy-ready) 📝
+
+1. Title & Severity (CVE-like severity mapping)
+
+
+2. Executive summary (1–2 lines) — business impact
+
+
+3. Technical detail (conceptual evidence) — logs, hashes, screenshots (no raw creds)
+
+
+4. Indicators (IOCs) — IPs, MACs, rule IDs, log snippets
+
+
+5. Risk & Attack Scenario (high-level) — what could happen if exploited
+
+
+6. Immediate remediation (0–24h) — containment steps
+
+
+7. Short/Medium/Long term remediation (7/30/90d) — actionable plan
+
+
+8. Appendices: lab notes, artifacts, chain-of-custody
+
+
+
+
+---
+
+9) 30/60/90 Remediation Plan (नेटवर्क-फर्स्ट) ⏱️
+
+0–24h: isolate exposed mgmt, disable unused ports, block public access to BMC/IPMI, freeze changes in impacted segments.
+
+7 days: port-security, DHCP snooping, disable DTP, inventory + lock patch panels, enable NetFlow/Zeek for critical VLANs.
+
+30 days: implement BGP filtering/RPKI, move mgmt behind bastion w/ MFA, enable OTDR baselines for fiber critical links.
+
+90 days: micro-segmentation of critical assets, purple-team to validate detection rules, supplier/hardware provenance checks.
+
+
+
+---
+
+10) Quick Practical Checklist — छोटा लेकिन घातक ✅
+
+[ ] Asset inventory complete (IP, MAC, physical port, owner).
+
+[ ] Unused ports physically blocked.
+
+[ ] Port-security & storm control on all edge ports.
+
+[ ] DHCP snooping & IP Source Guard enabled.
+
+[ ] Management plane isolated + bastion + MFA.
+
+[ ] NetFlow + Zeek + PCAP retention policy in place.
+
+[ ] BGP filters & RPKI where applicable.
+
+[ ] Wireless: 802.1X + PMF + rogue AP detection.
+
+[ ] Cloud: block instance metadata where not needed, enable VPC flow logs.
+
+[ ] OT: physical segmentation + vendor control.
+
+
+
+---
+
+11) “जो आप नहीं जानते होगा” — Hidden nuggets (short, punchy) 💣
+
+Cloud metadata (IMDS v1 vs v2) loopholes are one of the fastest ways to steal keys from instances.
+
+IPv6 is often left unmonitored and becomes an easy bypass for IPv4-only controls.
+
+BGP misconfig on a single peer can route your traffic through a hostile AS for minutes — monitoring + RPKI matters.
+
+Firmware-level implants are stealthy: asset procurement and firmware hash baselines are defense essentials.
+
+OT networks often fail basic logging; absence of logs = huge blindspot.
+
+
+
+---
+
+12) Final: एक पूर्ण-कार्य (Deliverable) — मैं क्या दे चुका/दे सकता हूँ अभी तुरंत:
+
+1. यह complete written playbook — ऊपर सब शामिल। (Done — inline).
+
+
+2. Printable Quick-Checklist + 30/60/90 Remediation one-pager — मैं अभी Markdown → PDF बना दूँ (बताइए PDF चाहिए या Markdown) — पर मैं बिना समय देरी किये अभी content दे चुका हूँ।
+
+
+3. Sample pentest finding (Markdown) — मैं तुरंत generate कर दूँ जिसे आप CISO/NetOps भेज सको।
+
+
+
+
+---
